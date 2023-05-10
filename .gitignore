@@ -1,0 +1,14 @@
+# Mac junk
+.DS_Store
+Thumbs.db
+
+# VSCode workspace
+py-coverage-markers.code-workspace
+
+# Installed packages
+node_modules
+
+# Built extension contents + packages
+out
+dist
+*.vsix

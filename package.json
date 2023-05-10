@@ -1,0 +1,128 @@
+{
+  "name": "py-coverage-markers",
+  "displayName": "py-coverage-markers",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.76.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:python"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "py-coverage-markers.reloadCoverage",
+        "title": "Coverage Markers: Reload Coverage File"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Python Coverage Marker",
+      "properties": {
+        "python.coverageMarkers.file": {
+          "type": "string",
+          "default": "coverage.xml",
+          "description": "Coverage.py output file (supports xml, lcov, and json). Only one coverage file at a time is supported. The .coverage file that coverage.py generates is considered internal / private, and is not supported.",
+          "order": 0
+        },
+        "python.coverageMarkers.covered.color": {
+          "type": "string",
+          "default": "rgba(0,255,0,.1)",
+          "description": "Highlight color for covered lines",
+          "order": 1
+        },
+        "python.coverageMarkers.covered.enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to highlight covered lines",
+          "order": 2
+        },
+        "python.coverageMarkers.missed.color": {
+          "type": "string",
+          "default": "rgba(255,0,0,.1)",
+          "description": "Highlight color for missed lines",
+          "order": 3
+        },
+        "python.coverageMarkers.missed.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to highlight missed lines",
+          "order": 4
+        },
+        "python.coverageMarkers.statusbar.showTotal": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to show total file line count in the statusbar",
+          "order": 5
+        },
+        "python.coverageMarkers.statusbar.showMissed": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to show missed line count (as a negative number) in the statusbar",
+          "order": 6
+        },
+        "python.coverageMarkers.statusbar.showCovered": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to show covered line count (as a positive number) in the statusbar (count will include un-measured lines)",
+          "order": 7
+        },
+        "python.coverageMarkers.statusbar.showPercent": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to show coverage percentage (covered / total)",
+          "order": 8
+        },
+        "python.coverageMarkers.statusbar.percentPrecision": {
+          "type": "number",
+          "default": 2,
+          "description": "Precision of coverage percent (digits after the decimal place)",
+          "order": 9
+        },
+        "python.coverageMarkers.statusbar.fullCoverageDopamine": {
+          "type": "boolean",
+          "default": true,
+          "description": "When true, show \"✅%\" for coverage data in the statusbar. When false, show normal stats (that add up to 100%)",
+          "order": 10
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.76.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.5",
+    "@typescript-eslint/parser": "^5.53.0",
+    "@vscode/test-electron": "^2.2.3",
+    "eslint": "^8.40.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-standard-with-typescript": "^34.0.1",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "prettier": "^2.8.8",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "autobind-decorator": "^2.4.0",
+    "fast-xml-parser": "^4.1.3",
+    "typescript-debounce-decorator": "^0.0.18"
+  }
+}
