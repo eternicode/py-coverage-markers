@@ -1,0 +1,23 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.2.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-merge-conflict
+  - repo: local
+    hooks:
+      - id: xo
+        name: XO Formatting
+        entry: xo
+        language: node
+        additional_dependencies:
+          - xo@0.54.2
+          - eslint@8.40.0
+          - typescript@4.9.5
+        types:
+          - ts
+        args:
+          - --fix

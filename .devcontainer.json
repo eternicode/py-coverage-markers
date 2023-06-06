@@ -1,0 +1,20 @@
+{
+    "name": "Py Coverage Markers",
+    "dockerComposeFile": [
+        "docker-compose.yml"
+    ],
+    "service": "extension",
+    "workspaceFolder": "/app",
+    // Default container-specific settings. Set workspace settings to customize.
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "pre-commit-helper.runOnSave": "fixes"
+            },
+            "extensions": [
+                "elagil.pre-commit-helper",
+                "samverschueren.linter-xo"
+            ]
+        }
+    }
+}

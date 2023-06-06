@@ -5,8 +5,9 @@ Thumbs.db
 # VSCode workspace
 py-coverage-markers.code-workspace
 
-# Installed packages
+# Node stuff
 node_modules
+coverage
 
 # Built extension contents + packages
 out

@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  extension:
+    build: .
+    image: extension
+    volumes:
+      - extension-home:/root
+      # - vscode-server:/root/.vscode-server
+      - .:/app
+    environment:
+      - PATH=$PATH:/app/node_modules/.bin/
+    command: sleep infinity
+
+volumes:
+  extension-home:
+  vscode-server:
+    driver_opts:
+      type: tmpfs
+      device: tmpfs
