@@ -14,4 +14,5 @@ coverage json
 
 deactivate
 
-rm -r .env .coverage .pytest_cache __pycache__
+rm -r .env .coverage .pytest_cache
+find . -name __pycache__ -type d -exec rm -r {} +

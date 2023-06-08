@@ -69,6 +69,8 @@ function _ingestXml(uri: vscode.Uri, callback: Callback): void {
       for (const cls of pkg.classes.class) {
         const lineData: number[] = [];
 
+        if (!cls.lines.line) continue;
+
         for (const line of cls.lines.line) {
           const lineNumber =
             Number.parseInt(line['@_number'] as string, 10) - 1;

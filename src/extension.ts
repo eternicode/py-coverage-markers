@@ -27,7 +27,17 @@ class CoverageData extends Updateable {
   }
 
   getForFile(filename: string): number[] {
-    return this.data[filename] ?? [];
+    if (filename in this.data) {
+      return this.data[filename];
+    }
+
+    for (const key of Object.keys(this.data)) {
+      if (filename.endsWith(key)) {
+        return this.data[key];
+      }
+    }
+
+    return [];
   }
 
   empty(): void {

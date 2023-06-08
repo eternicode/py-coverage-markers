@@ -9,6 +9,12 @@ py-coverage-markers.code-workspace
 node_modules
 coverage
 
+# Python stuff
+.env
+.coverage
+.pytest_cache
+__pycache__
+
 # Built extension contents + packages
 out
 dist
