@@ -6,11 +6,14 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
-
 ## [0.0.2] - 2023-06-08
+
+### Changed
 
 - Tweaked how filenames are matched, allowing to ignore prefixes
 
 ## [0.0.1] - 2023-06-05
+
+### Added
 
 - Initial release
