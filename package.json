@@ -29,7 +29,7 @@
         "python.coverageMarkers.file": {
           "type": "string",
           "default": "coverage.xml",
-          "description": "Coverage.py output file (supports xml, lcov, and json). Only one coverage file at a time is supported. The .coverage file that coverage.py generates is considered internal / private, and is not supported.",
+          "description": "Coverage.py output file (supports xml). Only one coverage file at a time is supported. The .coverage file that coverage.py generates is considered internal / private, and is not supported.",
           "order": 0
         },
         "python.coverageMarkers.covered.color": {
