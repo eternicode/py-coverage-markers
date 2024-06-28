@@ -44,8 +44,28 @@ export function ingest(
   }
 }
 
-function _ingestXml(uri: vscode.Uri, callback: Callback): void {
+function _ingestXml(
+  uri: vscode.Uri,
+  callback: Callback,
+  _backoff: Record<string, number> | undefined = undefined,
+): void {
   console.info('Ingesting file:', uri.fsPath);
+
+  if (_backoff === undefined) {
+    _backoff = {
+      delay: 1000,
+      factor: 2,
+      maxCumulativeDelay: 300_000, // 5min
+      currentCumulativeDelay: 0,
+    };
+  } else {
+    _backoff.currentCumulativeDelay += _backoff.delay;
+    _backoff.delay *= _backoff.factor;
+    if (_backoff.currentCumulativeDelay > _backoff.maxCumulativeDelay) {
+      console.info('XML ingestion backoff limit reached, giving up');
+      return;
+    }
+  }
 
   const parser: XMLParser = new XMLParser({
     ignoreAttributes: false,
@@ -57,7 +77,10 @@ function _ingestXml(uri: vscode.Uri, callback: Callback): void {
   void vscode.workspace.openTextDocument(uri).then((document) => {
     const xml = parser.parse(document.getText()) as Record<string, any>;
     if (Object.keys(xml).length === 0) {
-      console.info("XML file didn't parse");
+      console.info(`XML file didn't parse; retrying in ${_backoff!.delay}ms`);
+      setTimeout(() => {
+        _ingestXml(uri, callback, _backoff);
+      }, _backoff!.delay);
       return;
     }
 
