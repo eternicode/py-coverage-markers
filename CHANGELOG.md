@@ -6,6 +6,10 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed problem with uncovered files on one open tab preventing covered files in other open tabs from being updated
+
 ## [0.0.2] - 2023-06-08
 
 ### Changed

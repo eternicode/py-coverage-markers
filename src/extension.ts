@@ -168,7 +168,7 @@ class Extension {
       if (lineData.length === 0) {
         highlighters.clean(filename);
         this.updateStatusBar(false, editor.document.lineCount, 0);
-        return;
+        continue;
       }
 
       for (const [lineNumber, hits] of lineData.entries()) {
