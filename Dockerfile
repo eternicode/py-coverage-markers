@@ -2,9 +2,7 @@ FROM node:20
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y nano less python3 python3-venv python3-pip
-
-RUN pip install 'pre-commit==3.*'
+RUN apt-get update && apt-get install -y nano less pre-commit
 
 RUN npm install -g yo generator-code @vscode/vsce
 
